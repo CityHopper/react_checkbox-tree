@@ -58,13 +58,30 @@ function App() {
             {/*        */}
             {/*    ))*/}
             {/*}*/}
-            모든 과일
             <CheckboxSwitch
                 checkboxArray={checkboxes}
                 setCheckboxArray={setCheckboxes}
-                name={"all"}/>
-
-
+                name={"all"}/><br/>
+            <CheckboxSwitch
+                checkboxArray={checkboxes}
+                setCheckboxArray={setCheckboxes}
+                name={"apple"}/><br/>
+            <CheckboxSwitch
+                checkboxArray={checkboxes}
+                setCheckboxArray={setCheckboxes}
+                name={"apple-red"}/><br/>
+            <CheckboxSwitch
+                checkboxArray={checkboxes}
+                setCheckboxArray={setCheckboxes}
+                name={"apple-green"}/><br/>
+            <CheckboxSwitch
+                checkboxArray={checkboxes}
+                setCheckboxArray={setCheckboxes}
+                name={"banana"}/><br/>
+            <CheckboxSwitch
+                checkboxArray={checkboxes}
+                setCheckboxArray={setCheckboxes}
+                name={"grapefruit"}/><br/>
         </>
     );
 }

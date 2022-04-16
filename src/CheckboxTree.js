@@ -3,7 +3,7 @@ import React from "react";
 // 스위치 버튼 모양의 체크박스
 export function CheckboxSwitch(props) {
     return (
-            <label className="switch">
+            <label>{checkboxLabelFinder(props.checkboxArray, props.name)}
                 <input type="checkbox"
                        checked={checkboxValueFinder(props.checkboxArray, props.name)}
                        onChange={() => props.setCheckboxArray(
@@ -47,10 +47,7 @@ export function checkboxHandler(array, name, bool) {
         for (let i of ar) {
             if (i.name === nm) {
                 i.value = bl;
-                // todo 부모 checkbox value 변경하기
-                if (i.parent) {
-                    checkboxParentValidation(arr, i.parent)
-                }
+                if (i.parent) {checkboxParentValidation(arr, i.parent)}
                 if (i.children) {checkboxChildrenLoop(i.children, bl)}
             } else {
                 if (i.children) {checkboxNameLoop(i.children, nm, bl);}
@@ -80,4 +77,23 @@ export function checkboxValueFinder(array, name) {
 
     checkboxLoop(array, name);
     return result
+}
+
+// 특정 name의 체크박스의 label을 찾아주는 함수
+export function checkboxLabelFinder(array, name) {
+    let result;
+    function checkboxLoop(ar, nm) {
+        for (let i of ar) {
+            if (i.name === nm) {
+                result = i.label;
+            } else {
+                if (i.children) {
+                    checkboxLoop(i.children, nm);
+                }
+            }
+        }
+    }
+
+    checkboxLoop(array, name);
+    return result;
 }
